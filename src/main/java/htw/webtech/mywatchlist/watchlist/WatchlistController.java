@@ -3,12 +3,14 @@ package htw.webtech.mywatchlist.watchlist;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import java.util.Arrays;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/watchlist")
 public class WatchlistController {
 
     @GetMapping("/watchlist")
