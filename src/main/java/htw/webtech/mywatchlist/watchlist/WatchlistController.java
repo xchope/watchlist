@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api/watchlist")
+@RequestMapping("/api")
 public class WatchlistController {
 
     @GetMapping("/watchlist")
@@ -20,5 +20,6 @@ public class WatchlistController {
                 new WatchItem(2L, "Breaking Bad", "series", true, 10),
                 new WatchItem(3L, "Dune: Part Two", "movie", false, 0)
         );
+        //return service.getAll();
     }
 }
