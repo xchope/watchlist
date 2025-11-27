@@ -2,26 +2,36 @@ package htw.webtech.mywatchlist.watchlist;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:5173")
+
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://watchlist-vuih.onrender.com"
+})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/watchlist")
 public class WatchlistController {
 
-    @GetMapping("/watchlist")
-    public List<WatchItem> getWatchlist() {
-        return Arrays.asList(
-                new WatchItem(1L, "The Matrix", "movie", true, 9),
-                new WatchItem(2L, "Breaking Bad", "series", true, 10),
-                new WatchItem(3L, "Dune: Part Two", "movie", false, 0)
-        );
-        //return service.getAll();
-    }
-    @PostMapping("/watchlist")
-    public WatchItem create(@RequestBody WatchItem item) {
-        items.add(item);
-        return item;
+    private final WatchItemRepository repository;
+
+    public WatchlistController(WatchItemRepository repository) {
+        this.repository = repository;
     }
 
+    @GetMapping
+    public List<WatchItem> getWatchlist() {
+        return repository.findAll();
+    }
+
+    @PostMapping
+    public WatchItem create(@RequestBody WatchItem item) {
+        // einfache Defaults, falls Frontend nur title schickt
+        if (item.getType() == null) {
+            item.setType("movie");
+        }
+        // finished/rating bleiben Standardwerte (false / 0), wenn nicht gesetzt
+
+        return repository.save(item);
+    }
 }
+

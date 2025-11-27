@@ -1,34 +1,73 @@
 package htw.webtech.mywatchlist.watchlist;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class WatchItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
-    private String type; // "movie" oder "series"
-    private boolean watched;
-    private int rating; // 0-10
+    private String type;
+    private boolean finished;
+    private int rating;
 
-    public WatchItem() { }
+    public WatchItem() {
+        // leerer Konstruktor für JPA
+    }
 
-    public WatchItem(Long id, String title, String type, boolean watched, int rating) {
+    public WatchItem(Long id, String title, String type, boolean finished, int rating) {
         this.id = id;
         this.title = title;
         this.type = type;
-        this.watched = watched;
+        this.finished = finished;
         this.rating = rating;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    // Getter & Setter
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public boolean isWatched() { return watched; }
-    public void setWatched(boolean watched) { this.watched = watched; }
+    public String getTitle() {
+        return title;
+    }
 
-    public int getRating() { return rating; }
-    public void setRating(int rating) { this.rating = rating; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 }
