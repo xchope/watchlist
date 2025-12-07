@@ -8,8 +8,8 @@ class MywatchlistApplicationTests {
 
     @Test
     void dummyTest() {
-        // Einfacher Test, der immer true ist
         assertTrue(true);
     }
 }
+
 

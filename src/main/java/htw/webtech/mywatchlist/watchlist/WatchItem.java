@@ -13,12 +13,11 @@ public class WatchItem {
     private Long id;
 
     private String title;
-    private String type;
-    private boolean finished;
-    private int rating;
+    private String type;      // "movie" oder "series"
+    private boolean finished; // gesehen?
+    private int rating;       // 0-10
 
     public WatchItem() {
-        // leerer Konstruktor für JPA
     }
 
     public WatchItem(Long id, String title, String type, boolean finished, int rating) {
@@ -71,3 +70,4 @@ public class WatchItem {
         this.rating = rating;
     }
 }
+
